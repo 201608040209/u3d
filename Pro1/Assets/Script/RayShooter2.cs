@@ -1,7 +1,5 @@
-﻿using System;
+﻿using UnityEngine;
 using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 
 public class RayShooter2 : MonoBehaviour {
 
@@ -17,10 +15,10 @@ public class RayShooter2 : MonoBehaviour {
 
     private void OnGUI()
     {
-        int size = 12;
+        int size = 2;
         float posX = camera.pixelWidth / 2;
         float posY = camera.pixelHeight / 2;
-        GUI.Label(new Rect(posX, posY, size, size), "*");
+        GUI.Label(new Rect(posX, posY, size, size), "****");
     }
 
     // Update is called once per frame
@@ -33,7 +31,15 @@ public class RayShooter2 : MonoBehaviour {
             RaycastHit hit;
             if (Physics.Raycast(ray, out hit))
             {
-                StartCoroutine(SphereIndicator(hit.point));
+                GameObject hitObject = hit.transform.gameObject;
+                ReactiveTarget target = hitObject.GetComponent<ReactiveTarget>();
+                if (target != null) {
+                    target.ReactToHit();
+                }
+                else {
+                    StartCoroutine(SphereIndicator(hit.point));
+                }
+                
             }
         }
     }
