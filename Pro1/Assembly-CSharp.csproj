@@ -71,6 +71,8 @@
     <Compile Include="Assets\Script\RayShooter3.cs" />
     <Compile Include="Assets\Script\ReactiveTarget.cs" />
     <Compile Include="Assets\Script\WanderingAI.cs" />
+    <Compile Include="Assets\Script\WanderingAI1.cs" />
+    <Compile Include="Assets\Script\WanderingAI2.cs" />
     <Reference Include="UnityEditor.StandardEvents">
       <HintPath>F:/U3DPro/u3d/Pro1/Library/ScriptAssemblies/UnityEditor.StandardEvents.dll</HintPath>
     </Reference>
