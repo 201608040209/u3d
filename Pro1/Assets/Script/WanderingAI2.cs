@@ -4,27 +4,33 @@ using UnityEngine;
 
 public class WanderingAI2 : MonoBehaviour {
 
-    public Transform c;
-    public float speed = 3.0f;
-    private Vector3 d;
-    private bool challanged = false;
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-        if (challanged) {
-            d = c.transform.position - transform.position;
-            d = d.normalized;
-            transform.Translate(d*speed,Space.World);
-        }
-	}
-    private void OnTriggerEnter(Collider other)
+    public Transform target;
+    public int moveSpeed = 5;
+    public int rotationSpeed = 5;
+    private Transform myTransform;
+    void Awake()
     {
-        if (other.CompareTag("WarTank")) {
-            challanged = true;
-        }
+        myTransform = transform;
     }
+
+    void Start()
+    {
+        GameObject go = GameObject.FindGameObjectWithTag("Player"); 
+        target = go.transform;
+
+    }
+
+    void Update()
+    {
+        
+        //  在敌人和玩家之间画一条线
+        Debug.DrawLine(target.position, myTransform.position, Color.red);
+        //  看着目标
+        myTransform.rotation = Quaternion.Slerp(myTransform.rotation, Quaternion.LookRotation(target.position - myTransform.position), rotationSpeed * Time.deltaTime);
+
+        //  移向目标
+        myTransform.position += myTransform.forward * moveSpeed * Time.deltaTime;
+
+    }
+
 }

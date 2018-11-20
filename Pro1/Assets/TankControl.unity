@@ -2804,7 +2804,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1725025635}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 8, y: 1, z: 0}
+  m_LocalPosition: {x: 8, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 2, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -2845,7 +2845,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d2c9fa4f40aa694ea66305ad6e8b198, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  distanceToMe: 0
+  distanceToMe: 2
   me: {fileID: 1448258573}
   isSeekDistance: 10
   state: 0
@@ -2860,8 +2860,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b6d9e661be8c58459e116cd422aaa63, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  c: {fileID: 1448258577}
-  speed: 3
+  target: {fileID: 1448258577}
+  moveSpeed: 5
+  rotationSpeed: 5
 --- !u!1 &1765389710
 GameObject:
   m_ObjectHideFlags: 0
