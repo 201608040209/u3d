@@ -2,7 +2,7 @@
 using System.Collections;
 
 public class RayShooter2 : MonoBehaviour {
-
+    [SerializeField] private GameObject fireballPrefab;
     private Camera camera;
     // Use this for initialization
     void Start()
@@ -18,13 +18,13 @@ public class RayShooter2 : MonoBehaviour {
         int size = 2;
         float posX = camera.pixelWidth / 2;
         float posY = camera.pixelHeight / 2;
-        GUI.Label(new Rect(posX, posY, size, size), "********");
+        GUI.Label(new Rect(posX, posY, size, size), "***");
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetKey("up"))
         {
             Vector3 point = new Vector3(camera.pixelWidth / 2, camera.pixelHeight / 2, 0);
             Ray ray = camera.ScreenPointToRay(point);
@@ -46,7 +46,10 @@ public class RayShooter2 : MonoBehaviour {
 
     private IEnumerator SphereIndicator(Vector3 pos)
     {
-        GameObject sphere = GameObject.CreatePrimitive(PrimitiveType.Sphere);
+        //GameObject sphere = GameObject.CreatePrimitive(PrimitiveType.Sphere);
+
+        GameObject sphere = Instantiate(fireballPrefab,transform.position,transform.rotation) as GameObject;
+
         sphere.transform.position = pos;
         yield return new WaitForSeconds(1);
         Destroy(sphere);

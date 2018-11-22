@@ -21,13 +21,12 @@ public class ReactiveTarget : MonoBehaviour {
         StartCoroutine(Die());
     }
     private IEnumerator Die() {
-        Debug.Log("Health:" + _health);
+        //Debug.Log("Health:" + _health);
         this.transform.Rotate(-75, 0, 0);
-        yield return new WaitForSeconds(1.0f);
+        yield return new WaitForSeconds(0.1f);
         _health--;
         if (_health == 0) {
             Destroy(this.gameObject);
-        }
-        
+        }      
     }
 }

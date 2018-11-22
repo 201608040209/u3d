@@ -7,6 +7,7 @@ public class WanderingAI : MonoBehaviour {
     public float speed = 3.0f;
     public float obstacleRange = 5.0f;
     private Rigidbody rb;
+    public GameObject fireball;
 
     // Use this for initialization
     void Start () {
@@ -19,7 +20,12 @@ public class WanderingAI : MonoBehaviour {
         Ray ray = new Ray(transform.position, transform.forward);
         RaycastHit hit;
         if (Physics.SphereCast(ray, 0.7f, out hit)) {
-            if (hit.distance < obstacleRange) {
+            if (fireball == null) {
+                fireball = Instantiate(fireball) as GameObject;
+                fireball.transform.position = transform.TransformPoint(Vector3.forward * 10f);
+                fireball.transform.rotation = transform.rotation;
+            }
+            else if (hit.distance < obstacleRange) {
                 float angle = Random.Range(-110, 110);
                 transform.Rotate(0, angle, 0);
             }
