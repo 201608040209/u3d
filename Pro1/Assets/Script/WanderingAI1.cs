@@ -3,67 +3,52 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class WanderingAI1 : MonoBehaviour {
-    public float distanceToMe;           //智能体到目标的距离
-    public GameObject me;                //目标角色
-    public float isSeekDistance = 3.0f;  //可靠近范围
-    public int state;                     //智能体状态
+    public Transform target;
+    public float moveSpeed = 5.0f;
+    public float obstacleRange = 4.0f;
+    public float rotationSpeed = 5.0f;
+    public float distance;
+    private Transform myTransform;
+    void Awake()
+    {
+        myTransform = transform;
+    }
 
     void Start()
     {
-        me = GameObject.FindWithTag("WarTank");
+        GameObject go = GameObject.FindGameObjectWithTag("Player"); 
+        target = go.transform;
+
     }
+
     void Update()
     {
-        switch (state)
+
+        
+        distance = Vector3.Distance(myTransform.position, target.position);
+        if (distance <= 10)
         {
-            case 0:
-                Idle();   //空闲，四处游荡
-                break;
-            case 1:
-                Seek();   //向目标靠近
-                break;
+            //  在敌人和玩家之间画一条线
+            Debug.DrawLine(target.position, myTransform.position, Color.red);
+            //  看着目标
+            myTransform.rotation = Quaternion.Slerp(myTransform.rotation, Quaternion.LookRotation(target.position - myTransform.position), rotationSpeed * Time.deltaTime);
+            //  移向目标
+            myTransform.position += myTransform.forward * moveSpeed * Time.deltaTime;
+
         }
-    }
-    //智能体空闲函数
-    void Idle()
-    {
-        //获取两者间的距离
-        distanceToMe = Vector3.Distance(me.transform.position, this.transform.position);
-        if (distanceToMe > isSeekDistance) //大于可靠近范围，进入空闲状态
-        {
-            state = 0;
-            if (Random.value > 0.5)             //通过随机值，使其随机左右移动
-            {
-                this.transform.Rotate(Vector3.up * 5);
+        else {
+            myTransform.Translate(0, 0, moveSpeed * Time.deltaTime);
+
+            Ray ray = new Ray(myTransform.position, myTransform.forward);
+            RaycastHit hit;
+            if (Physics.SphereCast(ray, 0.75f, out hit)) {
+                if (hit.distance < obstacleRange) {
+                    float angle = Random.Range(-110, 110);
+                    transform.Rotate(0, angle, 0);
+                }
             }
-            else
-            {
-                transform.Rotate(Vector3.up * -5.0f);
-            }
-            this.transform.Translate(Vector3.forward * 0.1f);
         }
-        else
-        {
-            state = 1;
-        }
-    }
-    //智能体靠近函数
-    void Seek()
-    {
-        distanceToMe = Vector3.Distance(me.transform.position, this.transform.position);
-        if (distanceToMe < isSeekDistance)
-        {
-            this.transform.LookAt(me.transform);               //该方法使智能体总是面对目标
-            this.transform.Translate(Vector3.forward * 0.1f);  //向目标前进，即靠近（Vector3.back 后退，则逃避）
-        }
-        else
-        {
-            state = 0;
-        }
+
     }
 
 }
-
-
-
-

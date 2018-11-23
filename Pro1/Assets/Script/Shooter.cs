@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Shooter : MonoBehaviour {
 
-    private float speed = 10.0f;
+    private float speed = 30.0f;
     void Start()
     {
         
@@ -16,9 +16,10 @@ public class Shooter : MonoBehaviour {
     }
     void OnTriggerEnter(Collider other)
     {
-        EnemyHealth player = other.GetComponent<EnemyHealth>();
+        Health player = other.GetComponent<Health>();
+        //EnemyHealth player = other.GetComponent<EnemyHealth>();
         if (player != null) {
-            player.Hurt(1);
+            player.HurtHP(1);
         }
         Destroy(this.gameObject);
     }

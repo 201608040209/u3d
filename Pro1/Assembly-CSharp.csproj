@@ -61,9 +61,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Script\EnemyAI2.cs" />
     <Compile Include="Assets\Script\EnemyHealth.cs" />
     <Compile Include="Assets\Script\FireBall.cs" />
+    <Compile Include="Assets\Script\FireBallEnemy.cs" />
     <Compile Include="Assets\Script\FPSInput.cs" />
+    <Compile Include="Assets\Script\Health.cs" />
     <Compile Include="Assets\Script\Look.cs" />
     <Compile Include="Assets\Script\MouseLook.cs" />
     <Compile Include="Assets\Script\Movement1.cs" />
@@ -71,7 +74,6 @@
     <Compile Include="Assets\Script\RayShooter2.cs" />
     <Compile Include="Assets\Script\ReactiveTarget.cs" />
     <Compile Include="Assets\Script\Shooter.cs" />
-    <Compile Include="Assets\Script\WanderingAI.cs" />
     <Compile Include="Assets\Script\WanderingAI1.cs" />
     <Compile Include="Assets\Script\WanderingAI2.cs" />
     <Reference Include="UnityEditor.StandardEvents">

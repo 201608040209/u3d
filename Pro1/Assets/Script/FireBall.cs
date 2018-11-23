@@ -23,7 +23,7 @@ public class FireBall : MonoBehaviour {
                 //fireball.transform.position = gameObject.transform.TransformPoint(Vector3.forward * 1.5f);
                 //fireball.transform.rotation = gameObject.transform.rotation;
                 //Destroy(fireball, 5f);
-                firetime = 2.0f;
+                firetime = 1.0f;
             }
         }
         else
