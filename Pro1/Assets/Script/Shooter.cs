@@ -5,6 +5,7 @@ using UnityEngine;
 public class Shooter : MonoBehaviour {
 
     private float speed = 30.0f;
+    public GameObject explosion;
     void Start()
     {
         
@@ -16,11 +17,12 @@ public class Shooter : MonoBehaviour {
     }
     void OnTriggerEnter(Collider other)
     {
-        Health player = other.GetComponent<Health>();
+        CubeHealth player = other.GetComponent<CubeHealth>();
         //EnemyHealth player = other.GetComponent<EnemyHealth>();
         if (player != null) {
             player.HurtHP(1);
         }
+        Instantiate(explosion, transform.position, transform.rotation);
         Destroy(this.gameObject);
     }
 

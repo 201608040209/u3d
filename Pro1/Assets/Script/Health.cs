@@ -8,6 +8,7 @@ public class Health : MonoBehaviour {
     public Slider HPSlider;
     public Text HPText;
     public float HP;
+    public GameObject explosion;
 	// Use this for initialization
 	void Start () {
         HP = HPSlider.value = HPSlider.maxValue;
@@ -23,8 +24,9 @@ public class Health : MonoBehaviour {
         HP -= damage;
         HPSlider.value = HP;
         HPText.text = HP + "/" + HPSlider.maxValue;
-        if (HPSlider.value == 0)
+        if (HP == 0)
         {
+            Instantiate(explosion, transform.position, transform.rotation);
             Destroy(this.gameObject);
         }
     }
