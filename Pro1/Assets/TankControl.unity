@@ -2002,7 +2002,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a5842784cc8f9e48b7eac11aa26edca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fireballPrefab: {fileID: 1416950063476310, guid: 515d0113caf23094a92b453e3713d480,
+  fireballPrefab: {fileID: 1399264461034012, guid: 515d0113caf23094a92b453e3713d480,
     type: 2}
   firetime: 0
 --- !u!1 &515714987
@@ -5292,6 +5292,10 @@ Prefab:
     - target: {fileID: 488946, guid: 1cd1bdb2203012a40ab12a0d2fd7aa88, type: 2}
       propertyPath: m_RootOrder
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 171356, guid: 1cd1bdb2203012a40ab12a0d2fd7aa88, type: 2}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1cd1bdb2203012a40ab12a0d2fd7aa88, type: 2}

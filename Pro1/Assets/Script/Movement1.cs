@@ -7,7 +7,6 @@ public class Movement1 : MonoBehaviour {
     public float RotateSpeed;
     private Rigidbody rb;
 
-
     // Use this for initialization
     void Start () {
         rb = this.GetComponent<Rigidbody>();
@@ -19,6 +18,5 @@ public class Movement1 : MonoBehaviour {
         rb.velocity = transform.forward * v * MoveSpeed;
         float h = Input.GetAxis("HorizontalPlayer1");
         rb.angularVelocity = transform.up * h * RotateSpeed;
-
     }
 }

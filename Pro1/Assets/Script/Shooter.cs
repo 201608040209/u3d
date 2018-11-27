@@ -6,12 +6,14 @@ public class Shooter : MonoBehaviour {
 
     private float speed = 30.0f;
     public GameObject explosion;
+    public AudioClip audio;
     void Start()
     {
         
     }
     void Update()
     {
+        
         transform.Translate(0, 0, speed*Time.deltaTime);
         
     }
@@ -23,6 +25,7 @@ public class Shooter : MonoBehaviour {
             player.HurtHP(1);
         }
         Instantiate(explosion, transform.position, transform.rotation);
+        AudioSource.PlayClipAtPoint(audio, transform.position);
         Destroy(this.gameObject);
     }
 

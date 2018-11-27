@@ -4,22 +4,20 @@ using UnityEngine;
 
 public class sound_one : MonoBehaviour {
 
-    AudioSource audio;
+    public AudioSource audio;
 	// Use this for initialization
 	void Start () {
-        audio = GetComponent<AudioSource>();
+        //audio = GetComponent<AudioSource>();
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		
-	}
-    private void OnCollisionEnter(Collision collision)
-    {
-        if (collision.gameObject.name.Equals("Cube") ) {
-            audio.Play();
-            print("123");
+        if (audio != null) {
+            if (Input.GetKey("up"))
+            {
+                audio.Play();
+            }
         }
-        
-    }
+	}
+    
 }
